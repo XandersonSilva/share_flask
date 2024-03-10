@@ -38,27 +38,33 @@ class Upload(db.Model):
         self.category     = category
         self.content      = content
 
-class ConversationPeople():
-    __tablename__  = "conversation_people"
+class ConversationPeople(db.Model):
+    __tablename__ = "conversation_people"
     
     conv_people_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_snd       = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    user_rcv       = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    user_snd = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    user_rcv = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
-    def __init__(self,user_snd,user_rcv):
+    def __init__(self, user_snd, user_rcv):
         self.user_snd = user_snd
         self.user_rcv = user_rcv
     
 class Conversation(db.Model):
     __tablename__ = "conversations"
     
-    conv_id       =  db.Column(db.Integer, primary_key=True, autoincrement=True)
-    conversation  =  db.Column(db.Integer, db.ForeignKey("conversation_people.conv_people_id"))
-    name          =  db.Column(db.Text)
+    conv_id =  db.Column(db.Integer, primary_key=True, autoincrement=True)
+    # Corrigir a chave estrangeira para referenciar corretamente conv_people_id
+    conversation =  db.Column(db.Integer, db.ForeignKey("conversation_people.conv_people_id"))
 
-    def __init__(self,conversation,name,):
+    # Adicionar o relacionamento entre Conversation e ConversationPeople
+    conv_people = db.relationship('ConversationPeople', backref='conversation', lazy=True)
+
+    name =  db.Column(db.Text)
+
+    def __init__(self, conversation, name):
         self.conversation = conversation
-        self.name         = name 
+        self.name = name
+
 class Mensage(db.Model):
     __tablename__ = "mensages"
 
@@ -66,7 +72,7 @@ class Mensage(db.Model):
     conv_id       =  db.Column(db.Integer, db.ForeignKey('conversations.conv_id'), nullable=False)
     snd_id        =  db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     content       =  db.Column(db.Text)
-    time_send     =  db.Column(db.DateTime, default=datetime.utcnow())
+    time_send     =  db.Column(db.DateTime)
     msg_state     =  db.Column(db.SmallInteger, default=0) # 0: enviado, 1: leido
 
     def __init__(self, conv_id,snd_id,content,time_send,msg_state):

@@ -3,15 +3,19 @@
 <link rel="stylesheet" href= "{{url_for('static',filename='style/login.css')}}">
 {% endblock %}
 
+
     {% block content %}
     <main style="display: flex;">
         <section class ="login_form" >
             <h3>LogIn</h3>
             <form  method="post">
+                {{ form.csrf_token }}
                 <label class="form-label"      for="username">Username:</label>
-                <input class="form-control"    type="text" name="username" id="username"><br>
+                {{ form.username(class="form-control") }}
+                
                 <label class="form-label"      for="senha">Senha:</label>
-                <input class="form-control"    type="password" name="senha" id="senha"><br>
+                {{ form.password(class="form-control") }}
+                <br>
                 <input class="btn btn-primary" type="submit" value="Entrar" id="entrarbtn">
             </form>
         </section>
