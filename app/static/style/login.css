@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc( 100vh - 59px);
+    padding: 10px;
+}
+.login_form{
+    border-left: 2px solid #24815f;
+    border-right: 2px solid #24815f;
+    border-bottom: 10px solid #24815f;
+    border-top: 10px solid #24815f;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-top-right-radius: 50%;
+    border-top-left-radius:  0%;
+    border-bottom-right-radius: 0%;
+    border-bottom-left-radius: 50%;
+    border-color:     rgb(45, 159, 117);
+    background-color: rgb(28, 102, 75);
+    
+}
+
+.login_form >form{
+    border-bottom-right-radius: 01.375rem;
+    border-bottom-left-radius:  40%;
+    border-top-left-radius:  40%;
+    padding: 40px 30px;
+    color: #fff;
+
+}
+
+.login_form > h3{
+    color: #fff;
+    margin: 0;
+    text-align: center;
+    width: 77%;
+}
+
+.login_form > form > #entrarbtn{
+    width: 70%;
+    margin-left: calc(100% - 85%);
+    margin-right: calc(100% - 85%);
+    
+    background-color: #36793b;
+    border: none;
+}
+

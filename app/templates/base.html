@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guérit</title>
+    <link rel="stylesheet" href= "{{url_for('static',filename='style/bootstrap/bootstrap.css')}}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="{{url_for('static',filename='favicon/cpu_G.png')}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top" >
+                Guérit
+              </a>
+            </div>
+          </nav>
+    </header>
+    
+    {% block content %}{% endblock %}
+</body>
+<script src="{{url_for('static',filename='scripts/bootstrap/bootstrap.js')}}"></script>
+<link rel="stylesheet" href= "{{url_for('static',filename='scripts/Jquery/jquery.js')}}">
+</html>
