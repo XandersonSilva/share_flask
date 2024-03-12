@@ -3,22 +3,40 @@
 <link rel="stylesheet" href= "{{url_for('static',filename='style/singup.css')}}">
 {% endblock %}
 
+{% block content %}
 
-    {% block content %}
+
+
     <main style="display: flex;">
        
         <section class ="login_form" >
             <h3>SingUp</h3>
-            <form  method="post">
+            <form id="singup_form" onchange="validateInputs()" method="post">
                 {{ form.csrf_token }}
                 <label class="form-label"      for="name">Nome:</label>
                 {{ form.name(class="form-control", placeholder="Seu nome") }}
+                <label class="form-label"      for="usrname">Username:</label>
+                {{ form.usrname(class="form-control", placeholder="Cada username deve ser uníco") }}
 
-                <label class="form-label"      for="username">Username:</label>
-                {{ form.username(class="form-control", placeholder="Cada username deve ser uníco") }}
+                  {% if erro is defined  and erro == 'username'%}
+                        <div style="display:block;" id="alert_usr" class="alert alert-danger erro_info" role="alert"> 
+                    {% else %}
+                        <div style="display: none" id="alert_usr" class="alert alert-danger erro_info" role="alert">
+                    {% endif %}
+                            Esse Username já está em uso!
+                        </div>
+                
                 
                 <label class="form-label"      for="email">Email:</label>
-                {{ form.email(class="form-control", placeholder="seu@email.com") }}               
+                {{ form.email(class="form-control", placeholder="seu@email.com", _type="email") }}               
+
+                {% if erro is defined and  erro == 'email' %}
+                        <div style="display:block;" id="alert_e" class="alert alert-danger erro_info" role="alert"> 
+                    {% else %}
+                        <div style="display: none" id="alert_e" class="alert alert-danger erro_info" role="alert">
+                    {% endif %}
+                            {{info}}
+                        </div>
                 
                 <label class="form-label"      for="senha">Senha:</label>
                 {{ form.password(class="form-control", id="password", onkeyup="validatePassword()") }}
@@ -26,15 +44,39 @@
                 <label class="form-label"      for="cfm_password">Confirmar Senha:</label>
                 {{ form.cfm_password(class="form-control", id="cfm_password", onkeyup="validatePassword()") }}
                 
-                <br>
-                <div style="display: none;" id="alert_senhas" class="alert alert-danger" role="alert">
+                
+
+                <div style="display: none;"  id="alert_senhas" class="alert alert-danger" role="alert">
                     As senhas devem ser iguais!
                 </div>
-                <input class="btn btn-primary" type="submit" value="Cadastra-se" id="entrarbtn" >
+                <br>
+                <input class="btn btn-primary"  type="submit" value="Cadastra-se" id="entrarbtn" >
             </form>
         </section>
     </main>
+
     <script>
+        function validateInputs() {
+            var form = document.getElementById('singup_form');
+            var inputs = form.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                var inputValue = inputs[i].value;
+
+                // Remover espaços no início e no final
+                var trimmedValue = inputValue.trim();
+
+                // Atualizar o valor nos inputs
+                inputs[i].value = trimmedValue;
+
+                var alertsE = document.getElementById('alert_e');
+                alertsE.style.display = 'none';
+
+                var alertsU = document.getElementById('alert_usr');
+                alertsU.style.display = 'none';
+
+            }
+        }
+
         function validatePassword() {
             var password = document.getElementById('password').value;
             var cfmPassword = document.getElementById('cfm_password').value;
@@ -44,10 +86,6 @@
                 return alertSenhas.style.display = 'none'; 
                 }        
             return  alertSenhas.style.display = 'block';
-        }
-        {{erro}}
-        if (window.Flask.erro) {
-            alert(window.Flask.erro)
-        }
+        }                
     </script>
     {% endblock %}

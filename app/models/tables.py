@@ -53,7 +53,6 @@ class Conversation(db.Model):
     __tablename__ = "conversations"
     
     conv_id =  db.Column(db.Integer, primary_key=True, autoincrement=True)
-    # Corrigir a chave estrangeira para referenciar corretamente conv_people_id
     conversation =  db.Column(db.Integer, db.ForeignKey("conversation_people.conv_people_id"))
 
     # Adicionar o relacionamento entre Conversation e ConversationPeople
