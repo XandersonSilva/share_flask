@@ -5,10 +5,10 @@ class User(db.Model):
     __tablename__ = 'users'
 
     user_id  = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    usrname  = db.Column(db.String, unique=True) 
-    password = db.Column(db.String)
     name     = db.Column(db.String)
+    usrname  = db.Column(db.String, unique=True) 
     email    = db.Column(db.String, unique=True)
+    password = db.Column(db.String)
 
     def __init__(self, username, password, name, email):
         self.usrname  = username

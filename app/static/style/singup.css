@@ -8,6 +8,7 @@ main{
     padding: 10px;
 }
 .login_form{
+    margin-top: 20px;
     border-left:   01px solid ;
     border-right:  01px solid ;
     border-bottom: 10px solid ;
@@ -16,8 +17,8 @@ main{
     justify-content: center;
     flex-direction: column;
     border-top-right-radius: 50%;
-    border-top-left-radius:  00%;
-    border-bottom-right-radius: 02%;
+    border-top-left-radius:  020%;
+    border-bottom-right-radius: 020%;
     border-bottom-left-radius: 50%;
     border-color:     
     #335536;
@@ -30,7 +31,7 @@ main{
     border-bottom-right-radius: 01.375rem;
     border-bottom-left-radius:  40%;
     border-top-left-radius:  40%;
-    padding: 40px 30px;
+    padding: 20px 60px 40px 55px;
     color: #fff;
 
 }
@@ -40,12 +41,12 @@ main{
     margin: 0;
     text-align: center;
     width: 77%;
+    padding-top: 20px;
 }
 
 .login_form > form > #entrarbtn{
     width: 70%;
-    margin-left: calc(100% - 85%);
-    margin-right: calc(100% - 85%);
+    margin-left: 30%;
     
     background-color: #1C664B;
     border: none;

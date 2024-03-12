@@ -8,5 +8,5 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from app.models import tables
+from app.models import tables#, forms
 from app.controllers import default
