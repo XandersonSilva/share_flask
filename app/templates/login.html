@@ -8,7 +8,7 @@
     <main style="display: flex;">
         <section class ="login_form" >
             <h3>LogIn</h3>
-            <form  method="post">
+            <form onchange="validateInputs()" id="login_Form" method="post">
                 {{ form.csrf_token }}
                 <label class="form-label"      for="usrname">Username:</label>
                 {{ form.usrname(class="form-control") }}
@@ -20,4 +20,20 @@
             </form>
         </section>
     </main>
+
+    <script>
+        function validateInputs() {
+            var form = document.getElementById('login_Form');
+            var inputs = form.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                var inputValue = inputs[i].value;
+
+                // Remover espaços no início e no final
+                var trimmedValue = inputValue.trim();
+
+                // Atualizar o valor nos inputs
+                inputs[i].value = trimmedValue;
+            }
+        }
+    </script>
     {% endblock %}

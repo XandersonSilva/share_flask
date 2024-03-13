@@ -6,7 +6,7 @@ from app.models.tables import User
 from app.models.loginform import loginForm
 from app.models.singupform import singupForm
 
-def cadastro():
+def cadastro_():
     form = singupForm()
     if not form.validate_on_submit() and form.errors:
         erro = 'email'
