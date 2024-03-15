@@ -1,0 +1,44 @@
+#conta_btns{
+    gap:  15px;
+}
+#entrar_btn{
+    background-color: #53665f6c;
+    color:#fff;
+    border: none;
+    padding: 8px 14px;
+    font-size: 14px
+}
+#singup_btn{
+    background-color: #1C664B;
+    color:#fff;
+    border: none;
+    padding: 8px 16px;
+}
+
+#perfil{
+    border-radius: 50%;
+    border-color:     
+    #0b291e;
+    background-color: 
+    #18553f;
+    color: #fff;
+}
+
+#perfil:hover {
+    color: #fff;
+    background-color: #1C664B;
+    border-color: #fff;
+    border-radius: 30%;
+    width:  calc(100% + 2px);
+    height: calc(100% + 2px);
+}
+
+#singup_btn:hover, #entrar_btn:hover{
+    color: #fff;
+    border-color: #fff;
+    padding: 9px  17px;
+}
+
+main{
+    height: calc(100Vh - 59px - 24px);
+}

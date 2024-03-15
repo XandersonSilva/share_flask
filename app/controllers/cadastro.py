@@ -1,5 +1,5 @@
 
-from flask import render_template
+from flask import render_template, redirect, url_for
 from app import  db
 from sqlalchemy import text
 from app.models.tables import User
@@ -33,6 +33,7 @@ def cadastro_():
 
         db.session.add(u)        
         db.session.commit()
-        return render_template('login.html', form=loginForm())
+        return redirect(url_for('login'))
+    #redirect(url_for('signup'))
     return render_template('singup.html', form=form)
 

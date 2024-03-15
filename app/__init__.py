@@ -15,8 +15,7 @@ login_manager.login_view = 'login'
 from app.models import tables
 @login_manager.user_loader
 def load_user(user_id):
-    return tables.User.get(user_id)
-
+    return tables.User.query.get(int(user_id))
 
 from app.controllers import default
 

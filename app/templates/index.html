@@ -1,23 +1,39 @@
 {% extends  "base.html" %}
-
+    {% block css %}
+        <link rel="stylesheet" href= "{{url_for('static',filename='style/index.css')}}">
+    {% endblock %}
 
     {% block content %}
-    <header>
-        <h1>Bem vindo ao <i> Guérit</i> </h1>
 
-    </header>
-    <main>
-        <section>
-            <p>Esta página está dedicada aos seguintes servirços</p>
+    <main class="d-flex align-items-center flex-column">
+        <h1>Bem vindo ao <i> Guérit</i> </h1>
+        <section class="d-flex justify-content-center flex-column w-75 ">
+            <p class="text-center" >Esta página está dedicada aos seguintes servirços</p>
             <article>
-                <a href="#">Chat      </a>
-                -
-                <a href="#">File Drive</a>
-                
+                <div class="row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Special title treatment</h5>
+                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                          <a href="#" class="btn btn-primary">File Drive</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Special title treatment</h5>
+                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                          <a href="#" class="btn btn-primary">Chat</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </article>
         </section>
     </main>
-    <footer>
+    <footer class="d-flex justify-content-center">
         &copy; 2024 - Guérit. Todos os direitos reservados
     </footer>
     {% endblock %}

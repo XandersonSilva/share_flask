@@ -5,24 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guérit</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='favicon/cpu_W.png')}}" type="image/png">
     <link rel="stylesheet" href= "{{url_for('static',filename='style/bootstrap/bootstrap.css')}}">
+    <link rel="stylesheet" href= "{{url_for('static',filename='style/style.css')}}">
     {% block css %}{% endblock %}
 </head>
 <body>
     <header>
-        <!-- Navbar -->
+      <!-- 
+     
+         -->
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
               <a class="navbar-brand" href="/">
                 <img src="{{url_for('static',filename='favicon/cpu_G.png')}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top" >
                 Guérit
               </a>
+              <ul class="nav nav-pills" id='conta_btns'>
+
+                {% if current_user.is_authenticated %}
+
+                <li class="nav-item"> 
+                  
+                  <button class="btn btn-outline-primary" id="perfil" onclick="window.location.href = '/perfil'"><i class="bi bi-person">{{current_user.name[0].upper()}}</i>&nbsp;
+
+
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" id="entrar_btn" href="/login">Entrar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" id="singup_btn" href="/signup">Criar conta</a>
+                  </li>
+                {% endif %}
+
+              </ul>
             </div>
           </nav>
     </header>
     
     {% block content %}{% endblock %}
-</body>
+</body class="container ">
 <script src="{{url_for('static',filename='scripts/bootstrap/bootstrap.js')}}"></script>
 <link rel="stylesheet" href= "{{url_for('static',filename='scripts/Jquery/jquery.js')}}">
 </html>

@@ -34,7 +34,7 @@ class User(db.Model, UserMixin):
     def is_anonymous(self):
         return True
 
-    def get_id(self):
+    def get(self):
         return str(self.id)
 
 
